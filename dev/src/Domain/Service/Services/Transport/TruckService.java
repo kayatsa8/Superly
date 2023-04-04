@@ -18,7 +18,6 @@ public class TruckService {
      */
     public Result<Object> loadData(){
         try {
-            //controller.loadData();
         }
         catch (Exception e){
             return Result.makeError(e.getMessage());

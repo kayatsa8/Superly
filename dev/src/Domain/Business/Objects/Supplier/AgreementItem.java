@@ -15,13 +15,7 @@ public class AgreementItem {
     private float pricePerUnit;
     private double weight;
     private Map<Integer, Integer> bulkPrices; // <quantity, percent>
-
     ProductDataMapper productDataMapper;
-
-    /*
-          getBulkMap(instanceResult.getInt(SUPPLIER_ID_COLUMN),
-          instanceResult.getInt(PRODUCT_ID_COLUMN)));
-     */
 
     public AgreementItem(int _productId, int _idBySupplier, String _manu, float _price, Map<Integer, Integer> _bulkPrices) throws Exception {
         productDataMapper = new ProductDataMapper();
@@ -39,8 +33,6 @@ public class AgreementItem {
     }
 
     public int getIdBySupplier(){ return idBySupplier;}
-
-
 
     public String getManufacturer() {
         return manufacturer;
@@ -62,13 +54,6 @@ public class AgreementItem {
         idBySupplier = _id;
     }
 
-
-    /*
-    public void setName(String newName){
-        name = newName;
-    }
-     */
-
     // In case the manufacturer changed its name for some reason
     public void setManufacturer(String newManufacturer){
         manufacturer = newManufacturer;
@@ -77,7 +62,6 @@ public class AgreementItem {
     public void setPrice(float newPrice){
         pricePerUnit = newPrice;
     }
-
 
     public void setBulkPrices(Map<Integer, Integer> _bulk) throws Exception {
         NotNull.Check(_bulk);
@@ -143,17 +127,19 @@ public class AgreementItem {
         return result;
     }
 
-
     //Format : " productId ,idBySupplier,  name , manufacturer , pricePerUnit , quantity , weight,  percent , quantity , percent ..."
     //Old Format : " id , name , manufacturer , pricePerUnit , quantity , percent , quantity , percent ..."
     public String toString(){
         try {
             if (bulkPrices == null || bulkPrices.isEmpty()) {
-                return "" + productId + ", " + getName() + ", " + manufacturer + ", " + pricePerUnit + ", " + getWeight() + " [NO BULK PRICES]";
+                return "" + productId + ", " + getName() + ", " + manufacturer + ", " + pricePerUnit + ", " +
+                        getWeight() + " [NO BULK PRICES]";
             } else {
-                return "" + productId + ", " + getName() + ", " + manufacturer + ", " + pricePerUnit + ", " + getWeight() + "," + printBulkMap();
+                return "" + productId + ", " + getName() + ", " + manufacturer + ", " + pricePerUnit + ", " +
+                        getWeight() + "," + printBulkMap();
             }
-        }catch (Exception e){
+        }
+        catch (Exception e){
 
         }
         return "";
@@ -190,14 +176,12 @@ public class AgreementItem {
 
 
     public String getName() throws Exception {
-        //return "name1InComment";
         return  productDataMapper.get(String.valueOf(productId)).getName();
     }
 
 
 
     public double getWeight() throws Exception {
-        //return 1;
         return productDataMapper.get(String.valueOf(productId)).getWeight();
 
     }

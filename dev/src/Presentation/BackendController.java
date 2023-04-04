@@ -201,8 +201,6 @@ public class BackendController {
         return result.getValue();
     }
 
-    //TODO: try to get rid of this
-
     public String getEmploymentConditionsOf(String id) throws Exception {
         Result<String> result = employeeService.getEmploymentConditionsOf(id);
         if (result.isError())
@@ -935,23 +933,6 @@ public class BackendController {
             throw new Exception("Error occurred: " + result.getError());
         return result.getValue();
     }
-
-
-
-//    private final ShiftService shiftService = new ShiftService();
-//    private final ConstraintService constraintService = new ConstraintService();
-
-    //    public Set<Employee> getAllEmployees() throws Exception {
-//        Result<Set<Employee>> result = inventoryService.getAllEmployees();
-//        if (result.isError())
-//            throw new Exception("Error occurred: " + result.getError());
-//        return result.getValue();
-//    }
-//
-//    public Set<Employee> getAllCashiers() throws Exception {
-//        return getAllEmployees().stream().filter((x) -> x.getType() == JobTitles.Cashier).collect(Collectors.toSet());
-//    }
-
 
     public Result<Collection<Integer>> getStoreIDs(){
         return inventoryService.getStoreIDs();

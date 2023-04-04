@@ -674,34 +674,6 @@ public class InventoryService {
         }
     }
 
-//    /**
-//     * Add supplier to list of suppliers who sell specified product
-//     *
-//     * @return Result detailing success of operation, containing the edited Product
-//     */
-//    public Result<Product> addSupplierToProduct(int productID, int supplierID, int productIDWithSupplier){
-//        try {
-//            return Result.makeOk(new Product(controller.addSupplierToProduct(productID, supplierID, productIDWithSupplier)));
-//        }
-//        catch (Exception e){
-//            return Result.makeError(e.getMessage());
-//        }
-//    }
-
-//    /**
-//     * Remove supplier from list of suppliers who sell specified product
-//     *
-//     * @return Result detailing success of operation, containing the edited Product
-//     */
-//    public Result<Product> removeSupplierFromProduct(int productID, int supplierID){
-//        try {
-//            return Result.makeOk(new Product(controller.removeSupplierFromProduct(productID, supplierID)));
-//        }
-//        catch (Exception e){
-//            return Result.makeError(e.getMessage());
-//        }
-//    }
-
     /**
      * Delete a category
      * @param catID = ID of category to remove
@@ -779,7 +751,7 @@ public class InventoryService {
                 for (OrderItem oItem : o.getOrderItems()) {
                     oItems.add(new ServiceOrderItemObject(oItem.getProductId(),oItem.getIdBySupplier(), oItem.getName(), oItem.getQuantity(), oItem.getPricePerUnit(), oItem.getDiscount(), oItem.getFinalPrice(), oItem.getMissingItems(), oItem.getDefectiveItems(), oItem.getDescription(), oItem.getWeight()));
                 }
-                serviceOrders.add(new ServiceOrderObject(o.getId(), o.getSupplierId(), o.getCreationTime(), o.getArrivaltime(), o.getStoreID(), o.getStatusString(), oItems));
+                serviceOrders.add(new ServiceOrderObject(o.getId(), o.getSupplierId(), o.getCreationTime(), o.getArrivalTime(), o.getStoreID(), o.getStatusString(), oItems));
             }
             return Result.makeOk(serviceOrders);
         }
@@ -797,7 +769,7 @@ public class InventoryService {
                 for (OrderItem oItem : o.getOrderItems()) {
                     oItems.add(new ServiceOrderItemObject(oItem.getProductId(),oItem.getIdBySupplier(), oItem.getName(), oItem.getQuantity(), oItem.getPricePerUnit(), oItem.getDiscount(), oItem.getFinalPrice(), oItem.getMissingItems(), oItem.getDefectiveItems(), oItem.getDescription(), oItem.getWeight()));
                 }
-                serviceOrders.add(new ServiceOrderObject(o.getId(), o.getSupplierId(), o.getCreationTime(), o.getArrivaltime(), o.getStoreID(), o.getStatusString(), oItems));
+                serviceOrders.add(new ServiceOrderObject(o.getId(), o.getSupplierId(), o.getCreationTime(), o.getArrivalTime(), o.getStoreID(), o.getStatusString(), oItems));
             }
             List<String> ordersStrings = new ArrayList<>(orders.size());
             for (ServiceOrderObject order: serviceOrders) {

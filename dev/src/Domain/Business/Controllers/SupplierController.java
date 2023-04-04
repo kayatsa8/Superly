@@ -23,7 +23,6 @@ public class SupplierController {
         this.inventoryController = null;
         suppliersDAO = new SuppliersDAO();
         orderDAO = new OrderDAO();
-        // TODO: 10/06/2022 SHould get the transportController in the constructor
         transportController = new TransportController();
 
     }
@@ -196,23 +195,11 @@ public class SupplierController {
         suppliersDAO.getSupplier(supplierId).updateItemId(olditemId, newItemId, suppliersDAO.getAgreementItemDAO());
     }
 
-    /*
-    public void updateItemName(int supplierId, int itemId, String newName) throws Exception {
-        if(!supplierExist(supplierId))
-            throw new Exception("There is no supplier with this ID!");
-        suppliersDAO.getSupplier(supplierId).updateItemName(itemId, newName, suppliersDAO.getAgreementItemDAO());
-    }
-     */
-
-
-
     public void updateItemManufacturer(int supplierId, int itemId, String manufacturer) throws Exception {
         if(!supplierExist(supplierId))
             throw new Exception("There is no supplier with this ID!");
         suppliersDAO.getSupplier(supplierId).updateItemManufacturer(itemId, manufacturer, suppliersDAO);
     }
-
-
 
     public void addItemToAgreement(int supplierId, int itemId, int idBySupplier, String itemManu, float itemPrice, Map<Integer, Integer> bulkPrices) throws Exception {
         if(!supplierExist(supplierId))
@@ -233,8 +220,6 @@ public class SupplierController {
 
         return suppliersDAO.getSupplier(supplierId).isTransporting();
     }
-
-
 
     public List<Integer> getDaysOfDelivery(int supplierId) throws Exception{
         if(!supplierExist(supplierId))
@@ -427,23 +412,6 @@ public class SupplierController {
         return suppliersDAO.hasAgreement(supID);
     }
 
-
-
-    /*
-    public void addItemsToOrder(int supId, int orderId, List<String> itemsString) throws Exception {
-        if(!supplierExist(supId)){
-            throw new Exception("The supplier does not exists!");
-        }
-        for(int i = 0; i < itemsString.size(); i+=2 ){
-            if(itemsString.size() <= i+2)
-               throw new Exception("Some information is missing!");
-            suppliersDAO.getSupplier(supId).addOneItemToOrder(orderId , Integer.parseInt(itemsString.get(i)),Integer.parseInt(itemsString.get(i+1)), orderDAO);
-        }
-        //suppliers.get(supId).addItemsToOrder(orderId, itemsString);
-    }
-     */
-
-
     public int addNewOrder(int supId, int storeId) throws Exception {
         if(!supplierExist(supId)){
             throw new Exception("The supplier does not exists!");
@@ -455,7 +423,6 @@ public class SupplierController {
         return order.getId();
     }
 
-    // TODO: SR73
     public void addItemToOrder(int supId, int orderId, int itemId, int itemQuantity) throws Exception {
         double weight = 0;
 
@@ -469,9 +436,6 @@ public class SupplierController {
             // order is a new Order, or it has no transport, can be changed either way
             suppliersDAO.getSupplier(supId).addOneItemToOrder(orderId, itemId, itemQuantity, orderDAO);
             addOrderToTransport(order);
-            // POSSIBLE BUG: if order has no transport but was sent earlier, what happens?
-            // POSSIBLE FIX: add a new field to the order that indicates it was sent to transport, if so don't send it again.
-            // NOTE: according to TRANSPORT TEAM this process is fine.
         }
         else{
             // order has a transport
@@ -489,7 +453,6 @@ public class SupplierController {
         callInventoryToUpdateOnTheWay(itemId, order.getStoreID(), itemQuantity);
     }
 
-    // TODO: SR73
     public boolean removeOrder(int orderId) throws Exception {
         int supId = getSupplierWithOrder(orderId);
 
@@ -511,7 +474,6 @@ public class SupplierController {
         return suppliersDAO.getSupplier(supId).removeOrder(orderId, orderDAO);
     }
 
-    // TODO: SR73
     public void removeItemFromOrder(int supId, int orderId, int itemId) throws Exception {
         if(!supplierExist(supId)){
             throw new Exception("The supplier does not exists!");
@@ -541,7 +503,6 @@ public class SupplierController {
         suppliersDAO.getSupplier(supId).removeItemFromOrder(orderId, itemId, orderDAO);
     }
 
-    // TODO: SR73
     public void updateItemQuantityInOrder(int supID, int orderID, int itemID, int quantity) throws Exception {
         double additionalWeight;
         int quantityDifference;
@@ -579,7 +540,6 @@ public class SupplierController {
         }
 
     }
-
 
     public List<String> getOrder(int supId, int orderId) throws Exception {
         if(!supplierExist(supId)){
@@ -632,7 +592,6 @@ public class SupplierController {
         return suppliersDAO.getSupplier(supplierID).getOrderObject(orderID, orderDAO);
     }
 
-    // TODO: SR73
     //returns all orders that cannot be changed anymore (routine) + everything needed because of MinAmounts
     public List<Order> createAllOrders(Map<Integer, Map<Integer, Integer>> orderItemMinAmounts) throws Exception { //map<productID, Map<store, amount>>
 
@@ -973,8 +932,6 @@ public class SupplierController {
         return result;
     }
 
-
-    // TODO: SR73
     public void addOrderToTransport(Order order) throws Exception {
         List<LocalDate> availableDays = getPossibleDates(order.getSupplierId());
 
@@ -987,7 +944,6 @@ public class SupplierController {
         orderDAO.setOrderArrivalTime(order.getId(), date);
     }
 
-    // TODO: SR73
     //public for testing!!!
     public List<LocalDate> getPossibleDates(int supplierId) {
         List<LocalDate> dates = new ArrayList<>();
@@ -1052,8 +1008,6 @@ public class SupplierController {
         return  day;
     }
 
-    // TODO:  call this functions from updateItemQuantityInOrder, return to it the total new weight if ok, if not return 0 or -1...
-    //      Where should we call this function from the automatic Orders?.
     public boolean checkWeightLegal(int supplierId, int orderID, int orderItemId, int differenceQuantity, double weightOfItem) throws Exception {
 
         double newItemWeight = weightOfItem * differenceQuantity;  //just the added weight

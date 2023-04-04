@@ -68,9 +68,11 @@ public class Product {
     public double getWeight() {
         return weight;
     }
+
     public String getManufacturer() {
         return manufacturer;
     }
+
     public Integer getInStore(int store) {
         if (getStockReport(store)==null)
             throw new IllegalArgumentException("Product " + id + " is not sold in store " + store);
@@ -99,7 +101,8 @@ public class Product {
     private SaleToCustomer getCurrentSale() {
         SaleToCustomer currentSale = null;
         for (SaleToCustomer sale: sales)
-            if ((sale.isActive() && currentSale==null) || (sale.isActive() && currentSale!=null && currentSale.getPercent()<sale.getPercent()))
+            if ((sale.isActive() && currentSale==null) ||
+                    (sale.isActive() && currentSale!=null && currentSale.getPercent()<sale.getPercent()))
                 currentSale = sale;
         return category.findCurrentBestSale(currentSale);
     }
@@ -155,12 +158,21 @@ public class Product {
             }
         if (bestSale==null)
             return getOriginalPrice();
-        return getOriginalPrice()*(100-bestSale.getPercent())/100; //what if price in general changed? do we need a log of the prices?
+        return getOriginalPrice()*(100-bestSale.getPercent())/100;
     }
 
     public DefectiveItems reportDamaged(int storeID, int amount, int employeeID, String description, boolean inWarehouse) {
         removeItems(storeID, amount, inWarehouse);
-        DefectiveItems dir = new DefectiveItems(defectReportCounter++, Damaged, LocalDate.now(), storeID, id, amount, employeeID, description, inWarehouse);
+        DefectiveItems dir = new DefectiveItems(defectReportCounter++,
+                Damaged,
+                LocalDate.now(),
+                storeID,
+                id,
+                amount,
+                employeeID,
+                description,
+                inWarehouse
+        );
         damagedItemReport.add(dir);
         DEFECTIVE_ITEMS_DATA_MAPPER.insert(dir);
         return dir;
@@ -168,7 +180,16 @@ public class Product {
 
     public DefectiveItems reportExpired(int storeID, int amount, int employeeID, String description, boolean inWarehouse) {
         removeItems(storeID, amount, inWarehouse);
-        DefectiveItems eir = new DefectiveItems(defectReportCounter++, Expired, LocalDate.now(), storeID, id, amount, employeeID, description, inWarehouse);
+        DefectiveItems eir = new DefectiveItems(defectReportCounter++,
+                Expired,
+                LocalDate.now(),
+                storeID,
+                id,
+                amount,
+                employeeID,
+                description,
+                inWarehouse
+        );
         expiredItemReport.add(eir);
         DEFECTIVE_ITEMS_DATA_MAPPER.insert(eir);
         return eir;
@@ -231,7 +252,15 @@ public class Product {
         Location warehouseLocation = new Location(locationIDCounter++, storeID, true, shelvesInWarehouse);
         if (getStockReport(storeID)!=null)
             throw new IllegalArgumentException("Product " + name + " is already sold at store " + storeID);
-        stockReports.put(storeID, new StockReport(storeID, id, 0, 0, minAmount, targetAmount, 0));
+        stockReports.put(storeID, new StockReport(storeID,
+                id,
+                0,
+                0,
+                minAmount,
+                targetAmount,
+                0
+                )
+        );
         STOCK_REPORT_DATA_MAPPER.insert(getStockReport(storeID));
         locations.add(storeLocation);
         LOCATION_DATA_MAPPER.insert(storeLocation, id);

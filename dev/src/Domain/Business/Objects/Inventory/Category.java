@@ -44,6 +44,7 @@ public class Category {
         this.name = name;
         CATEGORY_DATA_MAPPER.updateName(getID(), name);
     }
+
     public void changeParentCategory(Category newParentCategory) {
         if (parentCategory!=null)
             parentCategory.removeSubcategory(this);
@@ -52,13 +53,9 @@ public class Category {
             parentCategory.addSubcategory(this);
         CATEGORY_DATA_MAPPER.updateParentCategory(getID(),newParentCategory==null ? null : newParentCategory.getID());
     }
+
     public List<Product> getAllProductsInCategory() {
-//         output = new ArrayList<>();
-        //if (products.isEmpty()) {
         List<Product> output = PRODUCT_DATA_MAPPER.getProductsFromCategory(ID);
-        //}
-        //else
-//        output.addAll(products);
         for (Category c : subcategories) {
             output.addAll(c.getAllProductsInCategory());
         }
@@ -66,16 +63,21 @@ public class Category {
     }
 
     private boolean removeSubcategory(Category category) { return subcategories.remove(category); }
+
     private boolean addSubcategory(Category category) {
         return subcategories.add(category);
     }
+
     public boolean removeProduct(Product product) {
         return products.remove(product);
     }
+
     public boolean addProduct(Product product) { return products.add(product); }
+
     public boolean removeSale(SaleToCustomer sale) {
         return sales.remove(sale);
     }
+
     public boolean addSale(SaleToCustomer sale) {
         return sales.add(sale);
     }
@@ -88,6 +90,7 @@ public class Category {
             currentSale = parentCategory.findCurrentBestSale(currentSale);
         return currentSale;
     }
+
     public Set<SaleToCustomer> getSaleHistory() {
         Set<SaleToCustomer> result;
         if (parentCategory==null)
@@ -100,11 +103,13 @@ public class Category {
         }
         return result;
     }
+
     public String getParentCategoryName() {
         if (parentCategory==null)
             return "";
         return parentCategory.getName();
     }
+
     public List<SaleToCustomer> getSalesOnDate(LocalDate date) {
         List<SaleToCustomer> result;
         if (parentCategory==null)
@@ -119,7 +124,6 @@ public class Category {
     }
 
     public Collection<DefectiveItems> getExpiredItemReports(LocalDate start, LocalDate end) {
-        //products.addAll(PRODUCT_DATA_MAPPER.getProductsFromCategory(ID));
         List<DefectiveItems> eirList = new ArrayList<>();
         for (Product p : products) {
             eirList.addAll(p.getExpiredItemReports(start, end));
@@ -131,7 +135,6 @@ public class Category {
     }
 
     public Collection<DefectiveItems> getDamagedItemReports(LocalDate start, LocalDate end) {
-        //products.addAll(PRODUCT_DATA_MAPPER.getProductsFromCategory(ID));
         List<DefectiveItems> dirList = new ArrayList<>();
         for (Product p : products) {
             dirList.addAll(p.getDamagedItemReports(start, end));

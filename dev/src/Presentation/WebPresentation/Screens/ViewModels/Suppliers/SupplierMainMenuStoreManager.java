@@ -40,8 +40,6 @@ public class SupplierMainMenuStoreManager extends SupplierMainMenu {
         handleError(resp);
     }
 
-
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         handleHeader(req, resp);

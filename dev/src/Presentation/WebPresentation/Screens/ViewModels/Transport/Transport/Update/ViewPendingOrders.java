@@ -41,6 +41,7 @@ public class ViewPendingOrders extends Screen {
         }
         printMenu(resp,new String[]{"Exit"});
     }
+
     public List<String> split(String s){
         List<String> l = new ArrayList<>();
         while (s.indexOf("/")!=-1){
@@ -50,6 +51,7 @@ public class ViewPendingOrders extends Screen {
         }
         return l;
     }
+
     public void printTransport(Set<Order> lst, HttpServletResponse resp) throws IOException {
         PrintWriter out = resp.getWriter();
         if (lst.size()==0){

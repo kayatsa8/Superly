@@ -26,7 +26,6 @@ public class ShiftController {
     private final EmployeeController employeeController = new EmployeeController();
 
     //CREATE
-
     public void createShift(LocalDate date, ShiftTypes type, int carrierCount, int cashierCount, int storekeeperCount, int sorterCount, int hr_managerCount, int logistics_managerCount, int transport_managerCount) throws Exception {
         if (shiftDataMapper.get(date, type) != null)
             throw new Exception(String.format(SHIFT_ALREADY_EXIST, type, date.format(DATE_FORMAT)));
@@ -40,7 +39,6 @@ public class ShiftController {
     }
 
     //READ
-
     public Shift getShift(LocalDate workday, ShiftTypes type) throws Exception {
         Shift shift = shiftDataMapper.get(workday, type);
         if (shift == null)
@@ -53,7 +51,6 @@ public class ShiftController {
     }
 
     //UPDATE
-
     public void editShiftManagerID(LocalDate workday, ShiftTypes type, String managerID) throws Exception {
         Shift shift = getShift(workday, type);
         shift.setShiftManagerId(managerID);
@@ -176,7 +173,9 @@ public class ShiftController {
         Pair<LocalDate, LocalDate> monthEdges = getMonthDatesEdges();
         return "Shifts during " + LocalDate.now().format(DateTimeFormatter.ofPattern("MMM")) + ": " +
                 Arrays.stream(ShiftTypes.values())
-                        .map((type) -> type + " - " + shiftDataMapper.getBetween(monthEdges.getLeft(), monthEdges.getLeft(), type))
+                        .map((type) -> type + " - " + shiftDataMapper.getBetween(monthEdges.getLeft(),
+                                monthEdges.getLeft(),
+                                type))
                         .collect(Collectors.joining(", "));
     }
 

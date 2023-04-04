@@ -158,7 +158,6 @@ public class Product extends Screen {
             System.out.println(r.getError());
         else {
             System.out.println("Product removed");
-            //System.out.println(printProduct(r.getValue()));
         }
     }
 

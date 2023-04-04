@@ -64,19 +64,7 @@ class InventoryControllerTest {
         prod1.getStockReport(store).setInDelivery(200);
         sc.addItemToOrder(supplier,order, prod2.getId(), 200);
         prod2.getStockReport(store).setInDelivery(200);
-        //check post conditions
-//        reportOfOrder.put(prod1.getId(), new Pair<>(new Pair<>(0,2),"2 items were defective"));
-//        assertDoesNotThrow(()->is.transportArrived(order, reportOfOrder));
-//        assertEquals(198,prod1.getTotalInStore(store));
-//        assertEquals(200,prod2.getTotalInStore(store));
-
     }
-
-//    Order arrivedOrder = supplierController.orderHasArrived(orderID, supplierID);
-//    int orderStoreID = arrivedOrder.getStoreID();
-//        for (OrderItem orderItem : arrivedOrder.getOrderItems()) {
-//        getProduct(orderItem.getProductId()).addItems(orderStoreID, orderItem.getQuantity());
-//    }
 
     @org.junit.jupiter.api.Test
     void addStore() {

@@ -44,8 +44,8 @@ public class CategoryDataMapper extends DataMapper<Category> {
     protected Category buildObject(ResultSet instanceResult) throws Exception {
         return new Category(instanceResult.getInt(ID_COLUMN),
                 instanceResult.getString(NAME_COLUMN),
-                new HashSet<>(), //might cause bugs later
-                new ArrayList<>(), //might cause bugs later
+                new HashSet<>(),
+                new ArrayList<>(),
                 get(Integer.toString(instanceResult.getInt(PARENT_COLUMN))));
     }
 

@@ -78,7 +78,6 @@ public class EditOrder extends Screen {
 
             int itemId = Integer.parseInt(req.getParameter("orderItemId"));
             int quantity = Integer.parseInt(req.getParameter("quantity"));
-            //int itemId = controller.getMatchingProductIdForIdBySupplier(idBySupplier);
 
             Result<Boolean> r = controller.updateItemQuantityInOrder(supplierId, orderId, itemId, quantity);
             if(r.isOk()){
@@ -106,7 +105,6 @@ public class EditOrder extends Screen {
             int orderId = getOrderId(req);
 
             int itemId = Integer.parseInt(req.getParameter("orderItemId1"));
-            //int itemId = controller.getMatchingProductIdForIdBySupplier(idBySupplier);
 
             Result<Boolean> r = controller.removeItemFromOrder(supplierId, orderId, itemId);
             if(r.isOk()){

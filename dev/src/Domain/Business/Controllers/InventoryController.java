@@ -49,9 +49,6 @@ public class InventoryController {
         supplierController = supCont;
     }
 
-    //    public void setTransportController(TransportController controller) {
-//        this.transportController = controller;
-//    }
     //for tests
     private static InventoryController instance;
     public static synchronized InventoryController getInventoryController() {
@@ -168,10 +165,6 @@ public class InventoryController {
         productIDs.removeAll(redundantProducts);
     }
     public SaleToCustomer addSale(List<Integer> categoriesList, List<Integer> productIDs, int percent, LocalDate start, LocalDate end) {
-        /*if (!start.before(end)) //could add more restrictions regarding adding past sales but would be problematic for tests
-            throw new IllegalArgumentException("Illegal dates. start must be before end");
-        if (!(percent>0 && percent<100))
-            throw new IllegalArgumentException("Percent sale must be between 1 and 99. Received: " + percent);*/
         if (start.isBefore(LocalDate.now()))
             throw new IllegalArgumentException("Can't create new sale that start in the past");
         if (categoriesList.isEmpty()&&productIDs.isEmpty())
@@ -238,13 +231,6 @@ public class InventoryController {
         }
     }
 
-//    public void transportArrived(int orderID, Map<Integer, Pair<Pair<Integer, Integer>, String>> reportOfOrder) throws Exception {
-//        Order arrivedOrder = supplierController.orderHasArrived(orderID, reportOfOrder);
-//        int orderStoreID = arrivedOrder.getStoreID();
-//        for (OrderItem orderItem : arrivedOrder.getOrderItems()) {
-//            getProduct(orderItem.getProductId()).addItems(orderStoreID, orderItem.getQuantity(), orderItem.getMissingItems()+orderItem.getDefectiveItems(), orderItem.getDescription());
-//        }
-//    }
 
     public Set<SaleToCustomer> getSaleHistoryByProduct(int productID) {
         return getProduct(productID).getSaleHistory();

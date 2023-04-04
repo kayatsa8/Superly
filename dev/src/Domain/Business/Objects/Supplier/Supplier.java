@@ -116,7 +116,6 @@ public class Supplier {
         return contacts.remove(contact);
     }
 
-
     public void addAgreement(int agreementType, String agreementDays, SuppliersDAO suppliersDAO) throws Exception {
         if(agreementType > NOT_TRANSPORTING || agreementType < ROUTINE)
             throw new Exception("Invalid agreement type!");
@@ -126,9 +125,6 @@ public class Supplier {
 
     }
 
-
-
-
     public void updateAddress(String address) {
         this.address = address;
     }
@@ -137,23 +133,18 @@ public class Supplier {
         this.bankNumber = bankNumber;
     }
 
-
     public void updateName(String newName) {
         this.name = newName;
     }
-
-
 
     public void addContact(Contact contact) {
         contacts.add(contact);
     }
 
-
     public void updatePayingAgreement(String payingAgreement) {
         this.payingAgreement = payingAgreement;
-        //If we add this payingAgreement to the agreement,  need to update there too
+        //If we add this payingAgreement to the agreement, need to update there too
     }
-
 
     public void addManufacturer(String manufacturer) throws Exception {
         if(manufacturers.contains(manufacturer)){
@@ -162,8 +153,6 @@ public class Supplier {
 
         manufacturers.add(manufacturer);
     }
-
-
 
     public String getName() {
         return name;
@@ -186,7 +175,6 @@ public class Supplier {
         agreement.getItem(itemID).setPrice(newPrice);
     }
 
-
     public void addItem(int itemId, int idBySupplier, String itemManu, float itemPrice, Map<Integer, Integer> bulkPrices, SuppliersDAO suppliersDAO) throws Exception {
         agreementExists();
         if(agreement.itemExists(itemId) || agreement.IdBySupplierExists(idBySupplier))
@@ -204,7 +192,6 @@ public class Supplier {
         }
     }
 
-
     public void deleteItem(int itemId, SuppliersDAO suppliersDAO) throws Exception {
         agreementExists();
         String manu = agreement.getItem(itemId).getManufacturer();
@@ -218,29 +205,16 @@ public class Supplier {
         }
     }
 
-
     public boolean isTransporting() throws Exception {
         agreementExists();
         return agreement.isTransporting();
     }
-
-
 
     public void updateItemId(int prodcutId, int newIdBySupplier, AgreementItemDAO agreementItemDAO) throws Exception {
         agreementExists();
         agreementItemDAO.updateItemIdBySupplier(prodcutId, newIdBySupplier);
         agreement.setItemId(prodcutId, newIdBySupplier);
     }
-
-
-    /*
-    public void updateItemName(int itemId, String newName, AgreementItemDAO agreementItemDAO) throws Exception {
-        agreementExists();
-        agreementItemDAO.updateItemName(itemId, newName);
-        agreement.getItem(itemId).setName(newName);
-    }
-
-     */
 
     public void updateItemManufacturer(int itemId, String manufacturer, SuppliersDAO suppliersDAO) throws Exception {
         AgreementItemDAO agreementItemDAO = suppliersDAO.getAgreementItemDAO();
@@ -252,9 +226,7 @@ public class Supplier {
 
 
         if(!agreement.isManufacturerRepresented(manu)){
-            //suppliersDAO.removeSupplierManufacturer(id, manu);
             suppliersDAO.addSupplierManufacturer(id, manufacturer);
-            //manufacturers.remove(manu);
             manufacturers.add(manufacturer);
         }
     }
@@ -513,7 +485,6 @@ public class Supplier {
         int discount = agreement.getItem(itemId).getDiscount(itemQuantity);
         Double finalPrice = agreement.getItem(itemId).calculateTotalPrice(itemQuantity);
 
-        //currItem.getWeight()
         double weight = currItem.getWeight();
         orders.get(orderId).addItem(itemId, agreement.getItem(itemId).getIdBySupplier() , agreement.getItem(itemId).getName(), itemQuantity, ppu, discount, finalPrice, weight, orderDAO);
 
@@ -571,7 +542,7 @@ public class Supplier {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd");
         String creationDate = formatter.format(currOrder.getCreationTime());
-        String arrivalDate = formatter.format(currOrder.getArrivaltime());
+        String arrivalDate = formatter.format(currOrder.getArrivalTime());
 
         result.add(creationDate);
         result.add(arrivalDate);

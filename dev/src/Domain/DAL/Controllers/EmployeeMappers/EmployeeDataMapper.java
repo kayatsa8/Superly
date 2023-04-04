@@ -210,7 +210,6 @@ public class EmployeeDataMapper  {
         }
     }
 
-    //TODO
     public Carrier getCarrier(String id) throws Exception {
         try {
             return carrierDataMapper.get(id);

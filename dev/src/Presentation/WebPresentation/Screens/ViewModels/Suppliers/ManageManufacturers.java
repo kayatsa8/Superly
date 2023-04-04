@@ -63,7 +63,7 @@ public class ManageManufacturers extends Screen {
         }
         if(getIndexOfButtonPressed(req) == 0){
             redirect(resp, ManageManufacturers.class, new String[]{"showManufacturers","supId"}, new String[]{"true",supId});
-            //showManufacturers(req, resp);
+
         }
 
     }
@@ -73,7 +73,6 @@ public class ManageManufacturers extends Screen {
             List<String> list = controller.getManufacturers(supId);
             if(list.isEmpty()){
                 setError("[THERE ARE NO REPRESENTED MANUFACTURERS BY THIS SUPPLIER]");
-                //refresh(req, resp, new String[]{"supId"}, new String[]{String.valueOf(supId)});
             }
             else{
                 PrintWriter out = resp.getWriter();

@@ -56,37 +56,7 @@ public class TransportController {
 
 
     public void advanceSite(int transportSN,int siteID) throws Exception {
-        /*Transport transport = getTransport(transportSN);
-        if(transport.getStatus()==TransportStatus.inProgress){
-            boolean isDestVisit = transport.destVisit(siteID);
-            boolean lastSite = transport.visitSite(siteID);
-            transportDataMapper.save(transport);
-            if(isDestVisit){
-                List<Integer> orders = transport.gerOrders();
-                for (Integer orderID:orders) {
-                   TransportOrder order = orderController.getTransportOrder(orderID);
-                   if(siteID==order.getDst()){
-                       DestinationDocument document = new DestinationDocument(orderID,siteID,order.getProducts());
-                       documentController.uploadDestinationDocument(document);
-                       TransportDocument trd;
-                       try{
-                           trd = documentController.getTransportDocument(transportSN);
-                       }
-                       catch (Exception e) {
-                           trd = new TransportDocument(transport.getSN(), transport.getStartTime(), transport.getTruckNumber(), transport.getDriverID());
-                       }
-                       trd.addDoc(orderID);
-                       documentController.uploadTransportDocument(trd);
-                   }
-                }
-            }
-            if(lastSite){
-                endTransport(transportSN);
-            }
-        }
-        else{
-            throw new Exception("This transport is not in progress");
-        }*/
+
 
     }
 
@@ -136,7 +106,8 @@ public class TransportController {
     public Pair<Boolean,ShiftTypes> canCreateTransportInShift(ShiftTypes shift,LocalDate d){
         try {
             Shift s = shiftController.getShift(d,shift);
-            if(s.getStorekeeperCount()>0 && getTransportsInShift(getAllTransports(),new Pair<>(d,shift)).size()<truckController.getTruckNumber()){
+            if(s.getStorekeeperCount()>0 && getTransportsInShift(getAllTransports(),
+                    new Pair<>(d,shift)).size()<truckController.getTruckNumber()){
                 return new Pair<>(true,shift);
             }
         } catch (Exception e) {
@@ -425,33 +396,5 @@ public class TransportController {
 
 }
 
-
-
-//TODO will be added in the next assignment
-    /*
-    private List<TransportOrder> getTransportOrderInSameArea(List<ShippingAreas> as) throws Exception {
-        List<TransportOrder> orderList = new ArrayList<>();
-        for (Integer orderID: orders.keySet())
-        {
-            //TODO: Update
-            if(as.contains(null))
-            {
-                orderList.add(orders.get(orderID));
-            }
-        }
-        return orderList;
-    }
-
-    public List<TransportOrder> getTransportOrderInSameArea(int transportSN) throws Exception {
-        if(pendingTransports.containsKey(transportSN))
-        {
-            Transport transport = pendingTransports.get(transportSN);
-            //TODO: return getTransportOrderInSameArea(transport.getSA());
-            return null;
-        }
-        else {
-            throw new Exception("The transport is not on the list of pending transport!");
-        }
-    }*/
 
 

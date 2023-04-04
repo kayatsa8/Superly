@@ -4,13 +4,12 @@ import Domain.Business.Objects.Truck;
 import Domain.DAL.Controllers.TransportMudel.TruckDAO;
 import Globals.Enums.TruckModel;
 
-//TODO not finished methods (ADD,GET,REMOVE)
+
 public class TruckController {
     private final TruckDAO truckDataMapper = new TruckDAO();
     public TruckController() {
     }
 
-    //TODO Change the exception
     public void removeTruck(int licenseNumber) throws Exception {
         truckDataMapper.delete(licenseNumber);
     }

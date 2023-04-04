@@ -82,6 +82,7 @@ public class PlaceCarrier extends Screen {
         else if(isButtonPressed(req, "Cancel"))
             redirect(resp, UpdateTransport.class);
     }
+
     private int getTransportSN(HttpServletRequest req){
         String val;
         if ((val = getParamVal(req,"Transport ID")) != null){
@@ -98,6 +99,7 @@ public class PlaceCarrier extends Screen {
             return NOT_TRANSPORT;
         }
     }
+
     private int getCarrierID(HttpServletRequest req) throws Exception {
         try {
             int ln = Integer.parseInt(req.getParameter("CID"));

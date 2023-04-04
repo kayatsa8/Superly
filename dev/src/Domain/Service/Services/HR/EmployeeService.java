@@ -349,8 +349,6 @@ public class EmployeeService {
         return Result.makeOk(null);
     }
 
-    //TODO: try to get rid of this
-
     public Result<Object> checkUnusedEmployeeID(String id) {
         try {
             controller.checkUnusedEmployeeID(id);

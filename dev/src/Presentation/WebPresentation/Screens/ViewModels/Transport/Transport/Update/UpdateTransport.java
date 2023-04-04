@@ -26,6 +26,7 @@ public class UpdateTransport extends Screen {
             "Add order",                    //5
             "Exit"                          //6
     };
+
     public UpdateTransport() {
         super(greet, ALLOWED);
     }
@@ -97,6 +98,7 @@ public class UpdateTransport extends Screen {
         }
         refresh(req,resp);
     }
+
     public boolean is_number(String id){
         try{
             int transportId = Integer.parseInt(id);

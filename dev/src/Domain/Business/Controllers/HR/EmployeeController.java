@@ -286,7 +286,6 @@ public class EmployeeController {
             validateID(id);
     }
 
-    //TODO: get rid of this if possible
     public String getEmploymentConditionsOf(String id) throws Exception {
         Employee employee = employeeDataMapper.get(id);
         if (employee == null)

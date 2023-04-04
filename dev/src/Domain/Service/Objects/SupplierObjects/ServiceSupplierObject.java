@@ -49,11 +49,13 @@ public class ServiceSupplierObject {
     }
 
     public String toString(){
-        return "ID: " + id + "\nName: " + name + "\nAddress: " + address + "\nBank number: " + bankNumber + "\nPaying agreement: " + payingAgreement;
+        return "ID: " + id + "\nName: " + name + "\nAddress: " + address + "\nBank number: " + bankNumber +
+                "\nPaying agreement: " + payingAgreement;
     }
 
     public String toString(String down){
-        return "ID: " + id + down +  "Name: " + name + down + "Address: " + address + down + "Bank number: " + bankNumber + down +  "Paying agreement: " + payingAgreement;
+        return "ID: " + id + down +  "Name: " + name + down + "Address: " + address + down + "Bank number: " +
+                bankNumber + down +  "Paying agreement: " + payingAgreement;
     }
 
 

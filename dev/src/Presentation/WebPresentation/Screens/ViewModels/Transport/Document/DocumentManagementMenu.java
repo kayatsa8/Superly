@@ -21,6 +21,7 @@ public class DocumentManagementMenu extends Screen {
     public DocumentManagementMenu() {
         super(greet, ALLOWED);
     }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (!isAllowed(req, resp, ALLOWED)){
@@ -81,6 +82,7 @@ public class DocumentManagementMenu extends Screen {
             }
         }
     }
+
     public List<String> split(String s){
         List<String> l = new ArrayList<>();
         while (s.indexOf("/")!=-1){

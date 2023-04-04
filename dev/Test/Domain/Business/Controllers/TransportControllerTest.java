@@ -15,24 +15,15 @@ public class TransportControllerTest extends TestCase {
 
 
 
-    //integration test"
+    //integration test
 
-    // this test require loading the employee db
+    // this test requires loading the employee db
     public void testCreateTransport() {
         try {
             transportController.createTransport(new Pair<>(LocalDate.parse("2022-06-25"), ShiftTypes.Morning));
         } catch (Exception e) {
             assertTrue(true);
         }
-/*
-        try {
-            transportController.createTransport(new Pair<>(LocalDate.parse("2022-06-1"), ShiftTypes.Evening));
-            assertTrue(true);
-        } catch (Exception e) {
-            fail();
-        }
-
- */
     }
 
 
@@ -41,14 +32,7 @@ public class TransportControllerTest extends TestCase {
             transportController.placeDriver(0,"100");
             assertSame("100", transportController.getTransport(0).getDriverID());
         } catch (Exception e) {
-            /*
-            try {
-                assertSame("100", transportController.getTransport(0).getDriverID());
-            } catch (Exception exception) {
-                fail();
-            }
 
-             */
         }
     }
 }

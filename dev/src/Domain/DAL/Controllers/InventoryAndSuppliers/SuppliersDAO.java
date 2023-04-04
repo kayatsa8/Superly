@@ -267,11 +267,6 @@ public class SuppliersDAO extends DataMapper<Supplier>{
         try(ConnectionHandler handler = getConnectionHandler()) {
             ResultSet instanceResult = select(handler.get());
             while (instanceResult.next()) {
-                //Load without contacts and manufacturers
-                //Supplier currSupplier = new Supplier(instanceResult.getInt(1), instanceResult.getInt(2),
-                //        instanceResult.getString(3), instanceResult.getString(4), instanceResult.getString(5));
-                //SUPPLIER_IDENTITY_MAP.put(String.valueOf(currSupplier.getId()), currSupplier);
-
                 //Load everything!
                 int id = instanceResult.getInt(1);
                 supplierIds.add(id);

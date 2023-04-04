@@ -47,7 +47,6 @@ public class UpdateTransportMenu extends Screen {
                         viewOrders();
                         break;
                     case 5:
-                        //TODO: viewOrdersInTheSameArea();
                         System.out.println("Features: Will implement View order in the same area");
                         break;
                     case 6:
@@ -102,7 +101,6 @@ public class UpdateTransportMenu extends Screen {
         }*/
     }
 
-    //TODO change this function after change
     private void addOrder(int transportID) throws Exception {
         /*int orderID = getID("Order");
         controller.addOrderToTransport(transportID, orderID);*/

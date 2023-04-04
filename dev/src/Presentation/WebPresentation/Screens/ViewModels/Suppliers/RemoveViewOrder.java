@@ -90,7 +90,6 @@ public abstract class RemoveViewOrder extends Screen {
         }
         catch (Exception e) {
             setError(e.getMessage());
-            //refresh(req, resp);
         }
     }
 }

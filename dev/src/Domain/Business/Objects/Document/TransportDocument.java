@@ -23,6 +23,7 @@ public class TransportDocument extends Document{
         this.doRedesign = false;
         this.redesign = "";
     }
+
     public int getTransportID(){
         return transportID;
     }
@@ -64,9 +65,11 @@ public class TransportDocument extends Document{
     public void setDriverName(String driverName) {
         this.driverName = driverName;
     }
+
     public List<Integer> getDocuments(){
         return destinationDocuments;
     }
+
     public void addDoc(Integer id){
         destinationDocuments.add(id);
     }

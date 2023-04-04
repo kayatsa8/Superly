@@ -43,7 +43,6 @@ public class Carrier extends Employee {
         this.licenses = new HashSet<>(licences);
     }
 
-
     @Override
     public void update(EmployeeDataMapper employeeDataMapper) throws Exception {
         employeeDataMapper.update(this);

@@ -38,6 +38,7 @@ public class PlaceTruck extends Screen {
         handleError(resp);
         handleSuccess(resp);
     }
+
     private void handleSuccess(HttpServletResponse resp) throws IOException {
         if (!isSuccess())
             return;
@@ -57,6 +58,7 @@ public class PlaceTruck extends Screen {
     private boolean isSuccess() {
         return success != null;
     }
+
     private void setSuccess(String success) {
         this.success = success;
     }
@@ -82,6 +84,7 @@ public class PlaceTruck extends Screen {
         else if(isButtonPressed(req, "Cancel"))
             redirect(resp, UpdateTransport.class);
     }
+
     private int getTransportSN(HttpServletRequest req){
         String val;
         if ((val = getParamVal(req,"ID")) != null){
@@ -98,6 +101,7 @@ public class PlaceTruck extends Screen {
             return NOT_TRANSPORT;
         }
     }
+
     private int getLicenseNumber(HttpServletRequest req) throws Exception {
         try {
             int ln = Integer.parseInt(req.getParameter("LN"));

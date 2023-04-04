@@ -37,11 +37,6 @@ public class EmployeeControllerTest extends TestCase {
     public void testEditEmployeeName() {
         try {
             SiteController s = new SiteController();
-            //loadHR();
-            //loadShiftForJuly();
-            //addInventoryTestData();
-            //insertFirstDataToDB(); // the db in the desktop is updated until (not including) this line. aka employees and Inventory
-            //transportData();
             employeeController.editEmployeeName("160","updated");
             assertEquals(employeeController.getEmployee("160").getName(),"updated");
         } catch (Exception e) {
@@ -315,8 +310,6 @@ public class EmployeeControllerTest extends TestCase {
         int order1Id = order1.getId();
         OrderDAO orderDAO = new OrderDAO();
         orderDAO.insert(order1);
-        //supplierController.suppliersDAO.add(order1);
-        //supplierController.insertToOrderDAO(order1);
         supplierController.suppliersDAO.getAgreementController().setLastOrderId(supplierId1, order1Id);
 
         //Bamba  80 * 0.2 = 16kg

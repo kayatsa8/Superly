@@ -99,7 +99,7 @@ public class CLI {
             while(!correctInput){
                 input = getInput();
 
-                switch (input){ // temporary
+                switch (input){
                     case 1 : {
                         supplierCard();
                         correctInput = true ;
@@ -430,10 +430,8 @@ public class CLI {
                     done = true;
                 }
                 else{
-                    //if(contact.length() > 12 && contact.contains(",")){ //12 is the minimal length according to the format
                     splitedContact = contact.split(",");
                     contacts.add(new Pair<>(splitedContact[0], splitedContact[1]));
-                    //}
                 }
             }
 
@@ -462,7 +460,6 @@ public class CLI {
                 System.out.println("The new supplier was added successfully to the data base.\n\n");
             }
             else{
-                //System.out.println("Something went wrong, please try again.\n\n");
                 System.out.println(result.getError());
                 return;
             }
@@ -570,7 +567,6 @@ public class CLI {
 
                 switch (input){
                     case 1 : {
-                        //supplierID = editID(supplierID);
                         correctInput = true;
                         break;
                     }
@@ -629,39 +625,6 @@ public class CLI {
         System.out.println("Returning..\n\n");
 
     }
-
-    /*
-    private int editID(int supplierID){
-        int input, newID = -1;
-        boolean correctInput = false;
-
-        while(!correctInput){
-            System.out.println("Insert the new id please.");
-
-            System.out.println("If you want to go back, please insert \"-1\".\n");
-            input = getInput();
-
-            if(input == -1){
-                System.out.println("Returning..\n");
-                return supplierID;
-            }
-
-            Result<Boolean> r = service.updateSupplierID(supplierID, input);
-
-            if(r.isOk()){
-                correctInput = true;
-                newID = input;
-            }
-            else{
-                System.out.println("Something went wrong, please try again.");
-            }
-        }
-
-        System.out.println("ID was changed successfully.\n\n");
-        return newID;
-
-    }
-     */
 
     private void editBunkNumber(int supplierID){
         int input;
@@ -873,11 +836,6 @@ public class CLI {
                 }
             }
         }
-
-
-
-
-
     }
 
     private String listToString(List<Integer> list){

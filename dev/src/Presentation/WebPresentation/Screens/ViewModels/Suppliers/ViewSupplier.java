@@ -93,7 +93,6 @@ public class ViewSupplier extends Screen {
         switch (getIndexOfButtonPressed(req)){
             case 0:
                 redirect(resp, ViewSupplier.class, new String[]{"showInfo","supId"}, new String[]{"true",supId});
-                //resp.sendRedirect("/ViewSupplier?showInfo=true");
                 break;
             case 1:
                 manageContacts(req, resp, supId);
@@ -106,11 +105,9 @@ public class ViewSupplier extends Screen {
                 break;
             case 4:
                 redirect(resp, ViewSupplier.class, new String[]{"showAllOrders","supId"}, new String[]{"true", supId});
-                //resp.sendRedirect("/ViewSupplier?showAllOrders=true");
                 break;
             case 5:
                 redirect(resp, ViewSupplier.class, new String[]{"showAllDiscountItems","supId"}, new String[]{"true", supId});
-                //resp.sendRedirect("/ViewSupplier?showAllDiscountItems=true");
                 break;
             case 6:
                 redirect(resp, EditCard.class, new String[]{"supId"}, new String[]{supId});
@@ -268,21 +265,6 @@ public class ViewSupplier extends Screen {
         return Integer.parseInt(getParamVal(req,"supId"));
 
     }
-
-        /*
-    private String getCookie(String name, HttpServletRequest req, HttpServletResponse resp, int time) throws IOException {
-        String cookie = "";
-        for (Cookie c : req.getCookies()) {
-            if (c.getName().equals(name)) {
-                cookie = c.getValue();
-            }
-            c.setMaxAge((int) TimeUnit.MINUTES.toSeconds(time)); //time of life of the cookie, if bot listed its infinite
-            resp.addCookie(c);
-        }
-        return cookie;
-    }
-
-     */
 
     private String getCookie(String name, HttpServletRequest req, HttpServletResponse resp, int time) throws IOException {
         String cookie = "";

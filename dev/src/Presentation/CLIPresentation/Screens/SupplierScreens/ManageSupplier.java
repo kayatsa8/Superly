@@ -65,16 +65,6 @@ public class ManageSupplier extends Screen {
         done = false;
         manufacturers = new ArrayList<>();
 
-        /*
-        System.out.println("ID: ");
-        id = getInput();
-
-        if(id == -1){
-            System.out.println("Returning..\n");
-            return;
-        }
-         */
-
         System.out.println("Name: ");
         name = scanner.nextLine();
         System.out.println("Bank number: ");

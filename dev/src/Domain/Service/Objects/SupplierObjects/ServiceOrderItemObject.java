@@ -75,12 +75,15 @@ public class ServiceOrderItemObject {
     }
 
     public String toString(){
-        return "Item Id: " + productId + ", Name:" + name + ", Id by Supplier:" + idBySupplier + ", Quantity: " + quantity + ", Price Per Unit: " + ppu + ", Discount: " + discount
-                + ", Final Price: " + finalPrice + "\nWeight: " + weight  + ", Missing items: " + missing + ", Defective items: " + defective + ", Description: " + description + "\n";
+        return "Item Id: " + productId + ", Name:" + name + ", Id by Supplier:" + idBySupplier + ", Quantity: " +
+                quantity + ", Price Per Unit: " + ppu + ", Discount: " + discount + ", Final Price: " + finalPrice +
+                "\nWeight: " + weight  + ", Missing items: " + missing + ", Defective items: " + defective +
+                ", Description: " + description + "\n";
     }
 
     public String toStringDiscount(float originalPrice) {
-        return "ID at Inventory: " + productId + ", Name:" + name + ", Id by Supplier:" + idBySupplier +  "\nQuantity: " + quantity + ", Price Per Unit: " + ppu + "\nDiscount: " + discount
-                + "\nFinal Price: " + finalPrice + ", Original Price: " + originalPrice;
+        return "ID at Inventory: " + productId + ", Name:" + name + ", Id by Supplier:" + idBySupplier +
+                "\nQuantity: " + quantity + ", Price Per Unit: " + ppu + "\nDiscount: " + discount +
+                "\nFinal Price: " + finalPrice + ", Original Price: " + originalPrice;
     }
 }

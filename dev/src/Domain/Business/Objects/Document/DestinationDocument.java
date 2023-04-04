@@ -16,11 +16,13 @@ public class DestinationDocument extends  Document{
         this.destID = destID;
         this.providedProducts = providedProducts;
     }
+
     public DestinationDocument(int id,int destID){
         ID = id;
         this.destID = destID;
         providedProducts = new ArrayList<>();
     }
+
     public int getID(){
         return ID;
     }

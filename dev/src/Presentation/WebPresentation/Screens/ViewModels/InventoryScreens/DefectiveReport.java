@@ -33,12 +33,6 @@ public class DefectiveReport extends Screen {
         }
         header(resp);
         greet(resp);
-//        String defectiveOrDamagedOrExpired = "defective";//getParamVal(req, "defective or damaged or expired");
-//        String byStoreOrByCategoryOrByProduct = "by product";//getParamVal(req, "by store or by category or by product");
-//        LocalDate startDate = LocalDate.parse("2020-01-01");//LocalDate.parse(getParamVal(req, "start date"));
-//        LocalDate endDate = LocalDate.parse("2023-12-31");//LocalDate.parse(getParamVal(req, "end date"));
-//        List<Integer> IDs = new ArrayList<>();//(Arrays.asList(getParamVal(req, "IDs").split(","))).stream().map(Integer::parseInt).collect(Collectors.toList());
-//        IDs.add(1);
         String defectiveOrDamagedOrExpired = getParamVal(req, "defective or damaged or expired");
         String byStoreOrByCategoryOrByProduct = getParamVal(req, "by store or by category or by product");
         LocalDate startDate =LocalDate.parse(getParamVal(req, "start date"));

@@ -61,7 +61,6 @@ public class DefectiveItemsDataMapper extends DataMapper<DefectiveItems> {
             return new DefectiveItems(resultSet.getInt(ID_COLUMN),
                     defect,
                     (java.sql.Date.valueOf(resultSet.getString(DATE_COLUMN))).toLocalDate(),
-                    //resultSet.getDate(DATE_COLUMN).toLocalDate(),
                     resultSet.getInt(STORE_COLUMN),
                     resultSet.getInt(PRODUCT_COLUMN),
                     resultSet.getInt(AMOUNT_COLUMN),
@@ -76,8 +75,6 @@ public class DefectiveItemsDataMapper extends DataMapper<DefectiveItems> {
     }
 
     public void insert(DefectiveItems instance) {
-        //Formatter fmt = new Formatter()
-        //String date = instance.getDate().format(fmt);
         String date = "" + instance.getDate().getYear() + "-" + ((instance.getDate().getMonthValue()<10) ? ("0" + instance.getDate().getMonthValue()) : (instance.getDate().getMonthValue())) + "-" + ((instance.getDate().getDayOfMonth()<10) ? ("0" + instance.getDate().getDayOfMonth()) : (instance.getDate().getDayOfMonth()));
         try {
             insert(Arrays.asList(instance.getId(),

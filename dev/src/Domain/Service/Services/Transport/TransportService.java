@@ -18,7 +18,6 @@ public class TransportService {
         this.controller = new TransportController();
     }
 
-    //TODO fix the function
     private Set<Transport> toServiceTransports(HashMap<Integer, Domain.Business.Objects.Transport> transports)
     {
         Set<Transport> transportList = new HashSet<>();
@@ -27,7 +26,7 @@ public class TransportService {
         }
         return transportList;
     }
-    //TODO still not fixed in the business
+
     public Result getInProgressTransports() {
         try {
             return Result.makeOk(toServiceTransports(controller.getInProgressTransports()));
@@ -36,7 +35,7 @@ public class TransportService {
             return Result.makeError(e.getMessage());
         }
     }
-    //TODO still not fixed in the business
+
     public Result getPaddingTransport(){
         try {
             return Result.makeOk(toServiceTransports(controller.getPendingTransports()));
@@ -45,7 +44,7 @@ public class TransportService {
             return Result.makeError(e.getMessage());
         }
     }
-    //TODO still not fixed in the business
+
     public Result getCompletedTransport(){
         try {
             return Result.makeOk(toServiceTransports(controller.getCompletedTransports()));
@@ -54,49 +53,6 @@ public class TransportService {
             return Result.makeError(e.getMessage());
         }
     }
-
-    /*public Result getWaitingTransports() {
-        try {
-            return Result.makeOk(toServiceTransports(controller.getWaitingTransports()));
-        }
-        catch (Exception e){
-            return Result.makeError(e.getMessage());
-        }
-    }
-
-    public Result getPastTransports() {
-        try {
-            return Result.makeOk(toServiceTransports(controller.getPastTransports()));
-        }
-        catch (Exception e){
-            return Result.makeError(e.getMessage());
-        }
-    }
-
-    public Result getTransportOrders() {
-        try {
-            //Todo: casting to service object
-            return Result.makeOk(controller.getTransportOrders());
-        }
-        catch (Exception e){
-            return Result.makeError(e.getMessage());
-        }
-    }*/
-
-    /*public Result getTransportOrders(ShippingAreas areas) {
-        try {
-            //Todo: casting to service object
-            return Result.makeOk(controller.getTransportOrders(areas));
-        }
-        catch (Exception e){
-            return Result.makeError(e.getMessage());
-        }
-    }
-
-    public Result getRedesignTransports() {
-        //TODO:
-        return null;
-    }*/
 
     public Result startTransport(int transportSN) {
         try {
@@ -164,7 +120,6 @@ public class TransportService {
     }
 
     public Result<Boolean> isThereAvailableCriersAndSupForTheWeek(){
-//        return Result.makeOk(controller.isThereAvailableCriersAndSupForTheWeek());
         return null;
     }
 

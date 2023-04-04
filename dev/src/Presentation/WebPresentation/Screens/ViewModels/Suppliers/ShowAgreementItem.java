@@ -66,11 +66,6 @@ public class ShowAgreementItem extends Screen {
         if (isButtonPressed(req, "Change manufacturer")) {
             changeManufacturer(req, resp);
         }
-        /*
-        else if (isButtonPressed(req, "Change Id")) {
-            changeId(req, resp);
-        }
-         */
         else if (isButtonPressed(req, "Change price per unit")) {
             changePPU(req, resp);
         }
@@ -90,7 +85,6 @@ public class ShowAgreementItem extends Screen {
             String itemId = String.valueOf(getItemId(req));
             String supplierId = String.valueOf(getSupplierId(req));
             redirect(resp, ShowAgreementItem.class, new String[]{"showItem","supId","itemId"}, new String[]{"true", supplierId, itemId});
-            //viewItem(req, resp);
         }
 
 
@@ -259,41 +253,9 @@ public class ShowAgreementItem extends Screen {
 
     }
 
-
     private void refreshPage(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         refresh(req, resp, new String[]{"supId","itemId"},new String[]{String.valueOf(getSupplierId(req)), String.valueOf(getItemId(req))});
 
     }
-
-
-
-    /*
-
-    private void changeId(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        try {
-            int itemId = getId(itemIdCookieName, req, resp);
-            int supplierId = getSupplierId(req, resp);
-
-            int num = Integer.parseInt(req.getParameter("itemId"));
-            if(controller.updateItemId(supplierId, itemId,num) ){
-                setError(String.format("ID updated to %d", num));
-            refreshPage(req,resp);
-            }
-            else{
-                setError("ID wasn't updated!");
-            refreshPage(req,resp);
-            }
-        } catch (NumberFormatException e1){
-            setError("Please enter a number!");
-            refreshPage(req,resp);
-        }
-        catch (Exception e) {
-            setError(e.getMessage());
-            refreshPage(req,resp);
-        }
-    }
- */
-
-
 
 }

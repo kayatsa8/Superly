@@ -11,7 +11,7 @@ public class TransportDocument extends Document {
     private String driverName;
     private List<Integer> destinationDocuments;
     private boolean doRedesign;
-    private String redesign;//Write what do?
+    private String redesign;
     public TransportDocument(Domain.Business.Objects.Document.TransportDocument transportDoc) {
         super(transportDoc.getTransportID());
         transportID = transportDoc.getTransportID();

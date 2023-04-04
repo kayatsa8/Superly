@@ -35,14 +35,9 @@ public class Order {
         this.id = globalID;
         globalID++;
 
-        //this.creationDate = Calendar.getInstance().getTime();
         this.creationDate = getTodayDate();
         this.orderItems = new ArrayList<>();
         this.storeID = storeID;
-
-        //Calendar cal = Calendar.getInstance();
-        //cal.add(Calendar.DATE, daysToArrival);
-        //arrivalTime = cal.getTime();
 
         arrivalTime = calculateArrivalTime(creationDate, daysToArrival);
         status = OrderStatus.waiting;
@@ -53,14 +48,10 @@ public class Order {
         this.supplierID = supplierID;
         this.id = globalID;
         globalID++;
-        //creationDate = new Date();
         this.creationDate = getTodayDate();
         this.orderItems = new ArrayList<>();
         this.storeID = storeID;
 
-        //Calendar cal = Calendar.getInstance();
-        //cal.add(Calendar.DATE, daysToArrival);
-        //arrivalTime = cal.getTime();
         arrivalTime = calculateArrivalTime(creationDate, daysToArrival);
 
         orderItems.add(item);
@@ -74,7 +65,6 @@ public class Order {
         this.supplierID = supplierId;
         this.creationDate = creationDate;
         this.arrivalTime = arrivalTime;
-        //globalID++;
         this.storeID = storeID;
         this.orderItems = new ArrayList<>();
         this.status = status;
@@ -87,9 +77,6 @@ public class Order {
         this.supplierID = orderArriavalTimePassed.getSupplierId();
         this.creationDate = getTodayDate();
         this.orderItems = orderArriavalTimePassed.getOrderItems();
-//        Calendar cal = Calendar.getInstance();
-//        cal.add(Calendar.DATE, 1);
-//        arrivalTime = cal.getTime();
         arrivalTime = calculateArrivalTime(creationDate, 1);
 
         globalID++;
@@ -106,23 +93,7 @@ public class Order {
         arrivalTime = calculateArrivalTime(creationDate, 1);
         this.storeID = storeID;
         this.status = OrderStatus.waiting;
-
     }
-
-    /*
-    public Order(Order order, OrderItem orderItem) {
-        this.id = globalID;
-        globalID++;
-        this.supplierID = order.getSupplierId();
-        this.creationDate = getTodayDate();
-        this.orderItems = new ArrayList<>();
-        orderItems.add(orderItem);
-        arrivalTime = calculateArrivalTime(creationDate, 1);
-        this.storeID = order.getStoreID();
-        this.status = OrderStatus.waiting;
-
-    }
-     */
 
     public Order(Order order, ArrayList<OrderItem> orderItems) {
         this.id = order.getId();
@@ -138,7 +109,6 @@ public class Order {
     public static void setGlobalId(int i) {
         globalID = i;
     }
-
 
     public void addItem(int productId, int idBySupplier, String name, int quantity, float ppu, int discount, Double finalPrice, double weight, OrderDAO orderDAO) throws Exception {
         if(!changeable()){
@@ -202,13 +172,12 @@ public class Order {
         return status;
     }
 
-
     public LocalDate getDate() {
         return creationDate;
     }
 
+    public int getStoreID() { return storeID; }
 
-    public int getStoreID() { return storeID; } //WROTE BY AMIR
     public int getId() {
         return id;
     }
@@ -219,15 +188,11 @@ public class Order {
 
     public boolean changeable(){
         return arrivalTime.isAfter(LocalDate.now());
-        //return arrivalTime.after(Calendar.getInstance().getTime());
     }
 
     public boolean passed(){
         return arrivalTime.isBefore(LocalDate.now());
-
-//        return arrivalTime.before(Calendar.getInstance().getTime());
     }
-
 
     public int getSupplierId() {
         return supplierID;
@@ -255,8 +220,6 @@ public class Order {
             return period.getDays();
         }
         return -1;
-        //long diff = arrivalTime.getTime() - currDate.getTime();
-        //return (int) (diff / (1000*60*60*24));
     }
 
     public int getQuantityOfItem(int productId) {
@@ -271,7 +234,7 @@ public class Order {
         return creationDate;
     }
 
-    public LocalDate getArrivaltime() {
+    public LocalDate getArrivalTime() {
         return arrivalTime;
     }
 

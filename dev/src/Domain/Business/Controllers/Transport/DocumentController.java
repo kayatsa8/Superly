@@ -6,9 +6,7 @@ import Domain.Business.Objects.Document.TransportDocument;
 import Domain.DAL.Controllers.TransportMudel.DestinationDocumentDAO;
 import Domain.DAL.Controllers.TransportMudel.TransportDocumentDataMapper;
 
-//TODO not finished methods (ADD and GET) for each document
 public class DocumentController {
-    //TODO move to DAL objects
     private TransportDocumentDataMapper transportDocumentsDataMapper;
     private DestinationDocumentDAO destinationDocumentsDAO;
 
@@ -17,12 +15,10 @@ public class DocumentController {
         destinationDocumentsDAO = new DestinationDocumentDAO();
     }
 
-
-
     public void uploadDestinationDocument(DestinationDocument document) throws Exception {
         destinationDocumentsDAO.save(document);
     }
-    //TODO check if the function is needed
+
     public void updateDestinationDocument(DestinationDocument document) throws Exception {
         destinationDocumentsDAO.save(document);
     }
@@ -38,7 +34,7 @@ public class DocumentController {
     public void uploadTransportDocument(TransportDocument document) throws Exception {
         transportDocumentsDataMapper.save(document);
     }
-    //TODO check if the function is needed
+
     public void updateTransportDocument(TransportDocument document) throws Exception {
         transportDocumentsDataMapper.save(document);
     }

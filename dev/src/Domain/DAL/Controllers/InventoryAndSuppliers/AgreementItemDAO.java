@@ -132,22 +132,9 @@ public class AgreementItemDAO extends DataMapper<AgreementItem> {
         update(Arrays.asList(ID_BY_SUPPLIER), Arrays.asList(newItemId), Arrays.asList(PRODUCT_ID_COLUMN), Arrays.asList(oldItemId) );
     }
 
-    /*
-    public void updateItemName(int itemId, String newName) throws SQLException {
-        update(Arrays.asList(NAME_COLUMN), Arrays.asList(newName), Arrays.asList(PRODUCT_ID_COLUMN), Arrays.asList(itemId) );
-    }
-
-     */
-
     public void updateManufacturer(int itemId, String manufacturer) throws SQLException {
         update(Arrays.asList(MANUFACTURER_COLUMN), Arrays.asList(manufacturer), Arrays.asList(PRODUCT_ID_COLUMN), Arrays.asList(itemId) );
     }
-
-    /*
-    public void updateWeight(int itemId, double weight) throws SQLException {
-        update(Arrays.asList(WEIGHT), Arrays.asList(weight), Arrays.asList(PRODUCT_ID_COLUMN), Arrays.asList(itemId) );
-    }
-     */
 
     public void removeItem(int id, int itemId) throws SQLException {
         bulkPricesDAO.remove(itemId);
@@ -158,7 +145,6 @@ public class AgreementItemDAO extends DataMapper<AgreementItem> {
     public String getNameOfItem(int itemId) throws Exception {
         return AGREEMENT_ITEM_IDENTITY_MAP.get(String.valueOf(itemId)).getName();
     }
-
 
     public int getMatchingProductIdForIdBySupplier(int idBySupplier) throws Exception {
         for(AgreementItem agreementItem : AGREEMENT_ITEM_IDENTITY_MAP.values()){

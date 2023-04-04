@@ -4,7 +4,6 @@ public class StockReport {
 
     private final int storeID;
     private final int productID;
-    //    private final String productName;
     private final int amountInStore;
     private final int amountInWarehouse;
     private final int amountInDeliveries;
@@ -15,7 +14,6 @@ public class StockReport {
     public StockReport(Domain.Business.Objects.Inventory.StockReport stockReport) {
         this.storeID = stockReport.getStoreID();
         this.productID = stockReport.getProductID();
-//        this.productName = stockReport.getProductName();
         this.amountInStore = stockReport.getAmountInStore();
         this.amountInWarehouse = stockReport.getAmountInWarehouse();
         this.amountInDeliveries = stockReport.getAmountInDeliveries();

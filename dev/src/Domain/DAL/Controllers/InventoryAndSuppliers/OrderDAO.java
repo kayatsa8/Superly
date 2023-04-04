@@ -30,11 +30,6 @@ public class OrderDAO extends DataMapper<Order> {
     public OrderDAO()  {
         super("Orders");
         orderItemDAO = new OrderItemDAO();
-        /*try {
-            getAllOrders();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
     }
 
     public Order getOrder(int orderId, SuppliersDAO suppliersDAO) throws Exception {
@@ -86,7 +81,7 @@ public class OrderDAO extends DataMapper<Order> {
     @Override
     public void insert(Order order) throws SQLException {
         insert(Arrays.asList(String.valueOf(order.getId()), String.valueOf(order.getSupplierId()),
-                String.valueOf(order.getStoreID()), String.valueOf(order.getCreationTime()), String.valueOf(order.getArrivaltime()), String.valueOf(order.getStatus())));
+                String.valueOf(order.getStoreID()), String.valueOf(order.getCreationTime()), String.valueOf(order.getArrivalTime()), String.valueOf(order.getStatus())));
 
         ArrayList<OrderItem> items = order.getOrderItems();
         if(items != null && items.size() > 0){

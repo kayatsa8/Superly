@@ -9,7 +9,7 @@ import Domain.DAL.Controllers.TransportMudel.SourcesDAO;
 import Globals.Enums.ShippingAreas;
 
 import java.sql.SQLException;
-//TODO not finished methods (GET) for each site
+
 public class SiteController {
     private final SourcesDAO sourcesDataMapper = new SourcesDAO();
     private final DestinationsDAO destinationsDataMapper = new DestinationsDAO();
@@ -30,7 +30,7 @@ public class SiteController {
             e.printStackTrace();
         }
 
-        //TODO: In Milestone 3 connect the data to DB
+
         Destination d1 = new Destination(new Address(ShippingAreas.East,"Ashkelon"),"roni","4321");
         Destination d2 = new Destination(new Address(ShippingAreas.South,"eilat"),"yoav","2222");
         Destination d3 = new Destination(new Address(ShippingAreas.Northeast,"Tel Aviv"),"David","0123");

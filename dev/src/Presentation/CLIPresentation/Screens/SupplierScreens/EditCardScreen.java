@@ -55,45 +55,7 @@ public class EditCardScreen extends Screen {
 
 
 
-    /*
-    private int editID(int supplierID){
-        int input, newID = -1;
-        boolean correctInput = false;
 
-        while(!correctInput){
-            System.out.println("Insert the new id please.");
-
-            System.out.println("If you want to go back, please insert \"-1\".\n");
-            input = getInput();
-
-            if(input == -1){
-                System.out.println("Returning..\n");
-                return supplierID;
-            }
-
-
-            boolean r = false;
-            try {
-                r = controller.updateSupplierID(supplierID, input);
-            } catch (Exception e) {
-                System.out.println("Unexpected error occurred");
-                System.out.println("Please try again");
-            }
-
-            if(r){
-                correctInput = true;
-                newID = input;
-            }
-            else{
-                System.out.println("Something went wrong, please try again.");
-            }
-        }
-
-        System.out.println("ID was changed successfully.\n\n");
-        return newID;
-
-    }
-     */
 
     private void editBunkNumber(int supplierID){
         int input;

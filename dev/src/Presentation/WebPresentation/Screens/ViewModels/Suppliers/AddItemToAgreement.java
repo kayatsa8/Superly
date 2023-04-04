@@ -34,8 +34,6 @@ public class AddItemToAgreement extends Screen {
         header(resp);
         greet(resp);
 
-        //int supId = getSupplierId( req, resp);
-
         printForm(resp, new String[] {"productId", "idBySupplier", "manufacturer", "pricePerUnit", "bulkPrices"}
                 , new String[]{"Product ID", "ID by Supplier", "Manufacturer", "Price Per Unit", "Bulk Prices"}, new String[]{"Add Item To Agreement"});
 
@@ -66,7 +64,6 @@ public class AddItemToAgreement extends Screen {
                 for(int i=0; i<bulkArr.length; i++){
                     if(i+1 >= bulkArr.length) {
                         setError("Missing info in bulkMap!");
-                        //refresh(req, resp, new String[]{"supId"}, new String[]{String.valueOf(supId)});
                         return;
                     }
                     else{

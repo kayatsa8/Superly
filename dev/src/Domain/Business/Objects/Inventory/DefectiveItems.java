@@ -32,25 +32,33 @@ public class DefectiveItems {
     public int getId() {
         return id;
     }
+
     public LocalDate getDate() {
         return date;
     }
+
     public int getStoreID() {
         return storeID;
     }
+
     public int getProductID() {
         return productID;
     }
+
     public int getAmount() {
         return amount;
     }
+
     public int getEmployeeID() {
         return employeeID;
     }
+
     public boolean getInWarehouse() { return inWarehouse; }
+
     public String getDescription() {
         return description;
     }
+
     public Defect getDefect() {
         return defect;
     }

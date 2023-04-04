@@ -32,7 +32,6 @@ public class ByOrderAgreementTest {
 
     @BeforeEach
     public void setUp(){
-        //agreement = new ByOrderAgreement(22);
         controller = new AgreementController();
     }
 

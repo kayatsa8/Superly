@@ -16,12 +16,10 @@ public class BulkPricesDAO extends DAO {
         super("BulkPrices");
     }
 
-
-
     public void addBulkPrices(int supID, int productId, Map<Integer, Integer> bulkPrices) throws SQLException {
 
-        for(Map.Entry<Integer, Integer> enrty : bulkPrices.entrySet()){
-            insert(Arrays.asList(String.valueOf(productId), String.valueOf(supID), String.valueOf(enrty.getKey()) , String.valueOf(enrty.getValue())));
+        for(Map.Entry<Integer, Integer> entry : bulkPrices.entrySet()){
+            insert(Arrays.asList(String.valueOf(productId), String.valueOf(supID), String.valueOf(entry.getKey()) , String.valueOf(entry.getValue())));
         }
 
     }
@@ -30,7 +28,6 @@ public class BulkPricesDAO extends DAO {
         remove(itemID);
         addBulkPrices(supID, itemID, newBulkPrices);
     }
-
 
     public Map<Integer, Integer> getAllBulkPrices(int supID, int itemId) {
         Map<Integer, Integer> output = new HashMap<>();
@@ -47,7 +44,6 @@ public class BulkPricesDAO extends DAO {
 
         return output;
     }
-
 
     public void removeSupplierBulk(int supplierId, int productId) throws SQLException {
         remove(Arrays.asList(1, 2), Arrays.asList(productId, supplierId));

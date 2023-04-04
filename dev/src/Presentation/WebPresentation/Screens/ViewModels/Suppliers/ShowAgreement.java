@@ -57,8 +57,6 @@ public class ShowAgreement extends Screen {
         printMenu(resp, new String[]{"Show All Items", "Add item to agreement"});
         printForm(resp, new String[] {"itemId"}, new String[]{"Item ID"}, new String[]{"Remove Item"});
         printForm(resp, new String[] {"itemId2"}, new String[]{"Item ID"}, new String[]{"View Item"});
-
-        // TODO: 11/06/2022 Should we do it? maybe it can cause problems...
         printForm(resp, new String[] {"agreementType", "agreementDays" }, new String[]{"Agreement Type", "Agreement Days"}, new String[]{"Change Agreement Type"});
         printInstructions(resp);
 
@@ -86,10 +84,6 @@ public class ShowAgreement extends Screen {
         if ((val = getParamVal(req,"showItems")) != null && val.equals("true")){
             showAllItems(req, resp, supId);
         }
-        //else if ((val = getParamVal(req,"viewItem")) != null && val.equals("true")){
-        //int itemId = Integer.parseInt(getCookie("itemId2ShowAgreement", req, resp, 5));
-        //viewItem(req, resp, supId);
-        //}
     }
 
 
@@ -149,7 +143,6 @@ public class ShowAgreement extends Screen {
         switch (getIndexOfButtonPressed(req)){
             case 0:
                 redirect(resp, ShowAgreement.class, new String[]{"showItems","supId"}, new String[]{"true",supId});
-                //resp.sendRedirect("/ShowAgreement?showItems=true");
                 break;
             case 1:
                 addItemToAgreement(req, resp, supId);

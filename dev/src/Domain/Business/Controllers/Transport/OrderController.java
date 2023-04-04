@@ -16,11 +16,6 @@ public class OrderController {
 
     public OrderController() {
     }
-    /*public void addTransportOrder(int daysToArrival, int supplierID, int storeID) throws Exception {
-
-        TransportOrder order = new TransportOrder(srcID,dstID,productList);
-        transportOrderDataMapper.save(order);
-    }*/
 
     public Order getTransportOrder(String orderID) throws Exception {
         Order order = transportOrderDataMapper.getOrder(Integer.parseInt(orderID),new SuppliersDAO());
@@ -30,14 +25,6 @@ public class OrderController {
         }
         return order;
     }
-
-    /*public int getExtraWeight(TransportOrder order) {
-        int weight = 0;
-        for (String productID : order.getProductList().keySet()) {
-            weight = weight + (int) (products.get(productID).getWeight() * order.getProductList().get(productID));
-        }
-        return weight;
-    }*/
 
     public Collection<Order> getPendingOrder() throws Exception {
         Collection<Order> padding = new ArrayList<>();

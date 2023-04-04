@@ -32,18 +32,23 @@ public class SaleToCustomer {
     public int getId() {
         return id;
     }
+
     public List<Integer> getCategories() {
         return categoryIDs;
     }
+
     public List<Integer> getProducts() {
         return productIDs;
     }
+
     public LocalDate getStartDate() {
         return startDate;
     }
+
     public LocalDate getEndDate() {
         return endDate;
     }
+
     public int getPercent() {
         return percent;
     }
@@ -51,12 +56,15 @@ public class SaleToCustomer {
     public boolean isUpcoming() {
         return startDate.isAfter(LocalDate.now());
     }
+
     public boolean isPassed() {
         return endDate.isBefore(LocalDate.now());
     }
+
     public boolean isActive() {
         return !(isUpcoming() || isPassed());
     }
+
     public boolean wasActive(LocalDate dateBought) { return !(startDate.isAfter(dateBought) || endDate.isBefore(dateBought)); }
 
     public void setEndDate(LocalDate newEndDate) {

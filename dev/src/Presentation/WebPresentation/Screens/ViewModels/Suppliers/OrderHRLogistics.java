@@ -24,9 +24,6 @@ public class OrderHRLogistics extends RemoveViewOrder {
         super(greet, ALLOWED);
     }
 
-
-    // TODO: Do we need it here?
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (!isAllowed(req, resp)){

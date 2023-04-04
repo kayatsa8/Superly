@@ -382,8 +382,6 @@ public class ShiftService {
         }
     }
 
-
-
     public Result<Set<Shift>> getEmployeeConstraintsBetween(String id, LocalDate start, LocalDate end) {
         try {
             return Result.makeOk(controller.getEmployeeConstraintsBetween(id, start, end).stream().map(shiftFactory::createServiceShift).collect(Collectors.toSet()));

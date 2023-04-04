@@ -68,7 +68,6 @@ public class ShiftDataMapper {
         eveningShiftDataMapper.insert(shift);
     }
 
-    //TODO
     //should delete shift with this key
     public void delete(LocalDate date, ShiftTypes type) {
         try {

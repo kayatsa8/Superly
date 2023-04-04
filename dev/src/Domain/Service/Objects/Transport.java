@@ -8,10 +8,11 @@ public class Transport {
     private String driverID;
     private  int truckNumber;
     private  int truckWeight;
-    //Todo:
-    //private List<Source> sources;
-    //private List<Destination> destinations;
-    //private HashMap<ShippingAreas, Integer> shippingAreas;
+
+
+
+
+
     public Transport(Domain.Business.Objects.Transport transport) {
         transportID = transport.getSN();
         startTime = transport.getStartTime();

@@ -17,15 +17,6 @@ public class ServiceOrderObject {
     private String status;
     private List<ServiceOrderItemObject> orderItems;
 
-
-    /*
-    public ServiceOrderObject(int id, LocalDate date, List<ServiceOrderItemObject> orderItems ){
-        this.orderId = id;
-        this.date = date;
-        this.orderItems = orderItems;
-    }
-     */
-
     public ServiceOrderObject(Domain.Business.Objects.Supplier.Order order) {
         List<ServiceOrderItemObject> items = new ArrayList<>();
         for (OrderItem oItem : order.getOrderItems()) {
@@ -34,7 +25,7 @@ public class ServiceOrderObject {
         this.orderId = order.getId();
         this.supplierId = order.getSupplierId();
         this.creationDate = order.getCreationTime();
-        this.arrivalDate = order.getArrivaltime();
+        this.arrivalDate = order.getArrivalTime();
         this.storeId = order.getStoreID();
         this.status = order.getStatusString();
         this.orderItems = items;
@@ -49,6 +40,7 @@ public class ServiceOrderObject {
         this.status = status;
 
     }
+
     public ServiceOrderObject(int orderId, int supplierId, LocalDate creationDate, LocalDate arrivalDate, int storeId, String status, List<ServiceOrderItemObject> items) {
         this.orderId = orderId;
         this.supplierId = supplierId;
@@ -59,7 +51,6 @@ public class ServiceOrderObject {
         this.orderItems = items;
 
     }
-
 
     public int getId() {
         return orderId;
@@ -91,8 +82,6 @@ public class ServiceOrderObject {
 
 
     public String toString(){
-        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd");
-        //String strDate = formatter.format(date);
         return "Order's ID: " + orderId +  "<br>Supplier's ID: " + supplierId + "<br>Creation Time: " + creationDate.toString()
                 + "<br>Arrival Time: " + arrivalDate.toString() +  "<br>StoreId: "
                 + storeId + "<br>Status: " + status +"<br>OrderItems:<br>" + printItems();

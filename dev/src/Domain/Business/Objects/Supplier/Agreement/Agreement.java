@@ -139,9 +139,6 @@ public abstract class Agreement {
             throw new Exception("The new ID By Supplier you gave has already been used!");
 
         items.get(productId).setIdBySupplier(newIdBySupplier);
-        //AgreementItem item = items.remove(productId);
-        //item.setIdBySupplier(newIdBySupplier);
-        //items.put(productId, item);
 
     }
 

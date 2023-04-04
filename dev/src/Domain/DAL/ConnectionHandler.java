@@ -8,7 +8,6 @@ import java.sql.SQLException;
 public class ConnectionHandler implements Closeable {
     private final static String dbName= "Superly.db"; // need to be change!
     private static String url = String.format("jdbc:sqlite:%s\\%s",System.getProperty("user.dir"),dbName);
-    // String url = String.format("jdbc:sqlite:%s/%s",System.getProperty("user.dir"),dbName); the url for the jar
     private static Connection connection;
     private static int counter =0;
 

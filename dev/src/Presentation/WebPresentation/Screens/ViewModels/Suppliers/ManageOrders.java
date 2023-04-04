@@ -113,11 +113,9 @@ public class ManageOrders extends Screen {
             }
         } catch (NumberFormatException e1){
             setError("Please enter a number!");
-            //refresh(req, resp);
         }
         catch (Exception e) {
             setError(e.getMessage());
-            //refresh(req, resp);
         }
     }
 
@@ -171,19 +169,16 @@ public class ManageOrders extends Screen {
             }
             else{
                 setError("Something went wrong, try again later");
-                //refresh(req, resp);
             }
         } catch (NumberFormatException e1){
             setError("Please enter a number!");
-            //refresh(req, resp);
         }
         catch (Exception e) {
             setError(e.getMessage());
-            //refresh(req, resp);
         }
     }
 
-    private void addOrder(HttpServletRequest req, HttpServletResponse resp/*, String storeIdString, String supplierIdString*/) throws IOException {
+    private void addOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
             int supplierId = Integer.parseInt(req.getParameter("supplierId"));
             int storeId = Integer.parseInt(req.getParameter("storeId"));

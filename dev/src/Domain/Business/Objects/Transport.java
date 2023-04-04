@@ -25,7 +25,6 @@ public class Transport {
     private List<Integer> transportOrders;
     private HashMap<ShippingAreas, Integer> shippingAreas;
     private TransportStatus status;
-    //TODO need to change the shift restart. the restart of Transport need to be with shift as argument
 
     private Pair<LocalDate, ShiftTypes> shift;
 
@@ -107,7 +106,6 @@ public class Transport {
 
     }
     public boolean isDoneTransport(){
-        //TODO need to be implemented
         return status== TransportStatus.inProgress;
     }
 
@@ -189,9 +187,6 @@ public class Transport {
     {
         return destinationsID;
     }
-    /*public TransportDocument toDocument() {
-        return new TransportDocument(startTime, truckNumber, driverName, getSrcIDs(), getDstIDs());
-    }*/
 
     public void addOrder(Order order)
     {
